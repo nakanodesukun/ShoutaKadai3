@@ -16,11 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet private weak var secondLabel: UILabel!
     @IBOutlet private weak var resultLabel: UILabel!
     private let nonValue: String = "値を入力してください"
+    
     @IBAction private func resultButton(_ sender: Any) {
+        
         guard let firstNum = firstTextField.text.flatMap({Int($0)}),
               let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        let calcuration = calculate(firstNum, secondNum)
+        
+        calculate(firstNum, secondNum)
+        
     }
+    
+    
     func calculate(_ num1:  Int,_ num2: Int) {
         guard let firstNum = firstTextField.text.flatMap({Int($0)}),
               let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
