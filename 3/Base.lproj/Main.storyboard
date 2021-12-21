@@ -16,15 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fex-8c-bqr">
-                                <rect key="frame" x="79" y="147" width="116" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-ya-lwx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-ya-lwx">
                                 <rect key="frame" x="236" y="147" width="127" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="KeS-du-PFX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -101,9 +97,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fex-8c-bqr">
+                                <rect key="frame" x="76" y="147" width="116" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="HtE-MA-7Lr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2BB-ya-lwx" firstAttribute="leading" secondItem="Fex-8c-bqr" secondAttribute="trailing" constant="44" id="FFG-Kr-SuW"/>
+                            <constraint firstItem="Fex-8c-bqr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="Ilh-X3-U4D"/>
+                            <constraint firstItem="Fex-8c-bqr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="kAs-0u-PxK"/>
+                            <constraint firstItem="2BB-ya-lwx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="s8U-7A-MKL"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="firstLabel" destination="Wj8-V1-dUC" id="SQE-0T-bVV"/>
