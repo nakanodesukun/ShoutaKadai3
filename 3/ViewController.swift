@@ -20,30 +20,34 @@ class ViewController: UIViewController {
     @IBAction private func resultButton(_ sender: Any) {
         
         guard let firstNum = firstTextField.text.flatMap({Int($0)}),
-              let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        
-        calculate(firstNum, secondNum)
+              let secondNum = secondTextField.text.flatMap({Int($0)}) else {  resultLabel.text = nonValue
+                  //値を返すわけではないのでreturnは次の行に書く
+                  return
+              }
+    calculate(num1: firstNum, num2: secondNum)
         
     }
     
+                //外部引数名は省略しない
+    func calculate(num1: Int, num2: Int) {
+        //ラベルを置き場とせず別途のletを用意する
+        let signedValue1: Int
+        if firstSwitch.isOn {
+         signedValue1 = -num1
+        } else {
+          signedValue1 = num1
+        }
+        firstLabel.text = String(signedValue1)
+        
+        let signedValue2: Int
+        if secondSwitch.isOn {
+            signedValue2 = -num2
+        } else {
+            signedValue2 = num2
+        }
+        secondLabel.text = String(signedValue2)
+        
+        resultLabel.text = String(signedValue1 + signedValue2)
     
-    func calculate(_ num1:  Int,_ num2: Int) {
-        guard let firstNum = firstTextField.text.flatMap({Int($0)}),
-              let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        if firstSwitch.isOn == true {
-            firstLabel.text = String(firstNum * (-1))
-        } else {
-            firstLabel.text = String(firstNum)
-        }
-        
-        if secondSwitch.isOn == true {
-            secondLabel.text = String(secondNum * (-1))
-        } else {
-            secondLabel.text = String(secondNum)
-        }
-        
-        guard let firstValue = firstLabel.text.flatMap({Int($0)}),
-              let secondValue = secondLabel.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        resultLabel.text = String(firstValue + secondValue)
     }
 }
