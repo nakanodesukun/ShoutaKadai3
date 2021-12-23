@@ -20,30 +20,32 @@ class ViewController: UIViewController {
     @IBAction private func resultButton(_ sender: Any) {
         
         guard let firstNum = firstTextField.text.flatMap({Int($0)}),
-              let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
+              let secondNum = secondTextField.text.flatMap({Int($0)}) else {
+                  resultLabel.text = nonValue
+                  return
+              }
         
-        calculate(firstNum, secondNum)
-        
+        calculate(num1: firstNum, num2: secondNum)
     }
     
     
-    func calculate(_ num1:  Int,_ num2: Int) {
-        guard let firstNum = firstTextField.text.flatMap({Int($0)}),
-              let secondNum = secondTextField.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        if firstSwitch.isOn == true {
-            firstLabel.text = String(firstNum * (-1))
+    func calculate(num1: Int, num2: Int) {
+        let signedValue1: Int
+        if firstSwitch.isOn {
+            signedValue1 = -num1
         } else {
-            firstLabel.text = String(firstNum)
+            signedValue1 = num1
         }
-        
-        if secondSwitch.isOn == true {
-            secondLabel.text = String(secondNum * (-1))
+        firstLabel.text = String(signedValue1)
+
+        let signedValue2: Int
+        if secondSwitch.isOn {
+            signedValue2 = -num2
         } else {
-            secondLabel.text = String(secondNum)
+            signedValue2 = num2
         }
-        
-        guard let firstValue = firstLabel.text.flatMap({Int($0)}),
-              let secondValue = secondLabel.text.flatMap({Int($0)}) else { return resultLabel.text = nonValue }
-        resultLabel.text = String(firstValue + secondValue)
+        secondLabel.text = String(signedValue2)
+
+        resultLabel.text = String(signedValue1 + signedValue2)
     }
 }
